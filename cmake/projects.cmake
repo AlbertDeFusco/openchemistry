@@ -81,3 +81,8 @@ list(APPEND projects kdsoap)
 set(kdsoap_version "f3bbcf1e")
 set(kdsoap_url "${oc_download_base}/tpl/kdsoap-${kdsoap_version}.tar.gz")
 set(kdsoap_md5 "d2dcf62844d9e5919ba21788a375feca")
+
+# spglib
+list(APPEND projects spglib)
+set(spglib_url "https://github.com/AlbertDeFusco/spglib/archive/cmake.zip")
+set(spglib_md5 "04f4eb103cd92e9c7c6966666d7f00b2")

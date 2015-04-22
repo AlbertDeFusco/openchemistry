@@ -15,6 +15,7 @@ option(USE_SYSTEM_GLEW "Should we use the system GLEW?" OFF)
 option(USE_SYSTEM_GTEST "Should we use the system GTest?" OFF)
 option(USE_SYSTEM_HDF5 "Should we use the system HDF5?" OFF)
 option(USE_SYSTEM_OPENBABEL "Should we use the system Open Babel?" OFF)
+option(USE_SYSTEM_SPGLIB "Should we use the system Spglib?" OFF)
 
 if(USE_SYSTEM_ZLIB)
   find_package(ZLIB REQUIRED)
@@ -64,6 +65,15 @@ if(USE_SYSTEM_EIGEN)
     "-DEIGEN3_INCLUDE_DIR:PATH=${EIGEN3_INCLUDE_DIR}")
 else()
   include(External_eigen)
+endif()
+
+if(USE_SYSTEM_SPGLIB)
+  find_package(SymSPG REQUIRED)
+  list(APPEND OpenChemistry_THIRDPARTYLIBS_ARGS
+    "-DSymSPG_INCLUDE_DIRS:PATH=${SymSPG_INCLUDE_DIRS}"
+    "-DSymSPG_LIBRARY:FILEPATH=${SymSPG_LIBRRARY}")
+else()
+  include(External_spglib)
 endif()
 
 if(BUILD_AVOGADRO OR BUILD_MONGOCHEM)
